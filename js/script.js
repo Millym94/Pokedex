@@ -1,4 +1,6 @@
-let pokemonList = [
+let pokemonRepository = (function () {
+    // array to store pokemon data
+    let pokemonList = [
     { 
         name: 'Pikachu',
         height: 0.4,
@@ -16,17 +18,34 @@ let pokemonList = [
         height: 2,
         types: 'psychic'
     }
-]
+];
+ // Function to get all Pokemon in the repository 
+function getAll() {
+    return pokemonList;
+}
 
-for (let i = 0; i < pokemonList.length; i++) {
-    document.write(`${pokemonList[i].name} (height: ${pokemonList[i].height}) `);
+// Function to add a new Pokemon to the Repository
+function add(pokemon) {
+    pokemonList.push(pokemon);
+}
 
-    if (pokemonList[i].height > 1.8) {
-        document.write(`- Wow, that is a big Pokemon!`);
+// Return an object that can be accessed from the outside of the function
+return {
+    getAll: getAll,
+    add: add,
+     };
+})();
 
-    } else {
-        document.write(` `);
+// Log result of getAll() to console
+console.log(pokemonRepository.getAll());
+
+// Iterate over Pokemon using forEach
+pokemonRepository.getAll().forEach(function (pokemon) {
+    let pokemonDetails = pokemon.name + ` (height: `+ pokemon.height +`)`;
+
+    if (pokemon.height > 1.8) {
+        pokemonDetails += `- Wow, that is a big Pokemon!`;
     }
 
-    document.write(`<br>`); // line break for formatting
-}
+    document.write(pokemonDetails + `<br>`); // line break for formatting
+});
