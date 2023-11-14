@@ -9,20 +9,18 @@
 
   <body>
   <!-- Main Title & List -->
-    <div>
       <h1>POKEDEX</h1>
-    </div>
-    <div class="mainlist">
-      <ul class="pokemon-list" style="list-style-type: none;"></ul>
-    </div>
+      <ul class="pokemon-list"></ul>
 
   <!-- Modals -->
-   <!-- Add a button to trigger the modal -->
-   <!-- <button id="show-modal">Show modal</button> -->
-   
-   <div id="modal-container"></div>
-
-   <!-- Include your JavaScript files -->
+   <div id="modal-container" class="modal-container">
+    <div class="modal-content">
+      <h2 id="modal-title" class="modal-title"></h2>
+      <p id="modal-height" class="modal-height"></p>
+      <img id="modal-image" class="modal-image" src="#" alt="Pokemon">
+      <button id="modal-close" class="modal-close">Close</button>
+   </div>
+  </div>
  
    <script src="js/promise-polyfill.js"></script>
    <script src="js/fetch-polyfill.js"></script>
