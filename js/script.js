@@ -16,8 +16,7 @@ function getAll() {
     function add(pokemon) {
         if (
             typeof pokemon === 'object' &&
-            'name' in pokemon &&
-            'detailsUrl' in pokemon
+            'name' in pokemon
         ) {
             pokemonList.push(pokemon);
         } else {
@@ -27,21 +26,23 @@ function getAll() {
     
 
 // Function to add a list item with a button for a Pokemon
-  function addListItem(pokemon) {
-    let fullList = document.querySelector('.pokemon-list');
+  function addListItem(pokemonItem) {
+    let pokemonListContainer = document.querySelector('.pokemon-list');
     let listItem = document.createElement('li');
     let button = document.createElement('button');
     button.classList.add('button-class');
-    button.innerText = pokemon.name;  // Set the button's text to the Pokemon's name
+    button.innerText = pokemonItem.name;  // Use pokemonItem instead of pokemon
     listItem.appendChild(button);
-    fullList.appendChild(listItem);
-    button.addEventListener('click', () => { // Add a click event listener to button to show Pokemon details
-      showDetails(pokemon);
+    pokemonListContainer.appendChild(listItem);
+    button.addEventListener('click', () => {
+      showDetails(pokemonItem);
     });
-}
+  }
+
   
-  function showDetails (pokemon) {
-    showModal (pokemon);
+  function showDetails(item) {
+    loadDetails(item).then(function () {
+    });
   }
 
  // Load pokemon from API 
@@ -55,6 +56,7 @@ function getAll() {
               detailsUrl: item.url
             };
             add(pokemon);
+            console.log(pokemon)
           });
         }).catch(function (e) {
           console.error(e);
@@ -79,51 +81,50 @@ function getAll() {
       }
 
 // Displays the Modal with Pokemon
-        function showModal(pokemon) {
-          let modalContainer = document.querySelector('#modal-container');
+// ... (your existing code)
 
-          // Clear all existing modal content
-          modalContainer.innerHTML = '';
-          let modal = document.createElement('div');
-          modal.classList.add('modal');
+function showDetails(item) {
+  pokemonRepository.loadDetails(item).then(function () {
+    const modalContainer = document.getElementById("modal-container");
+    const modalTitle = document.getElementById("modal-title");
+    const modalHeight = document.getElementById("modal-height");
+    const modalImage = document.getElementById("modal-image");
+    const modalClose = document.getElementById("modal-close");
 
-          // Add the new modal content
-          let closeButtonElement = document.createElement('button');
-          closeButtonElement.classList.add('modal-close');
-          closeButtonElement.innerText = 'X';
-          closeButtonElement.addEventListener('click', hideModal);
+    modalTitle.textContent = "Name: " + item.name;
+    modalHeight.textContent = "Height: " + item.height;
 
-          let titleElement = document.createElement('h1');
-          titleElement.innerText = pokemon.name;
+    modalImage.setAttribute("src", item.imageUrl);
+    modalImage.setAttribute("alt", item.name);
 
-          let imageElement = document.createElement('img');
-          imageElement.classList.add('modal-img');
-          imageElement.src = pokemon.imageUrl
+    modalClose.addEventListener("click", function () {
+      closeModal();
+    });
 
-          let contentElement = document.createElement('p');
-          contentElement.innerText = 'HEIGHT: ' + pokemon.height;
+    modalContainer.style.display = "block";
 
-          let typesElement = document.createElement('p');
-          typesElement.innerText= 'TYPES: ' + pokemon.types;
+    // Add event listener for the "esc" key
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" || event.key === "Esc" || event.keyCode === 27) {
+        closeModal();
+      }
+    });
 
-          modal.appendChild(closeButtonElement);
-          modal.appendChild(imageElement);
-          modal.appendChild(titleElement);
-          modal.appendChild(contentElement);
-          /* model.appendChild(typesElement);*/
-          modalContainer.appendChild(modal);
+    // Add event listener for clicks outside the modal
+    modalContainer.addEventListener("click", function (event) {
+      if (event.target === modalContainer) {
+        closeModal();
+      }
+    });
 
-          modalContainer.classList.add('is-visible');
-        }
-
-        modalContainer.addEventListener('click', (e) => {
-          // Since this is also triggered when clicking INSIDE the modal
-          // We only want to close if the user clicks directly on the overlay
-          let target = e.target;
-          if (target === modalContainer) {
-            hideModal();
-          }
-        });
+    // Function to close the modal
+    function closeModal() {
+      modalContainer.style.display = "none";
+      // Remove the "keydown" event listener when the modal is closed
+      document.removeEventListener("keydown", closeModal);
+    }
+  });
+}
 
         return {
           add: add,
@@ -134,30 +135,8 @@ function getAll() {
           showDetails: showDetails
         };
       })();
-
-       let dialogPromiseReject; // To set later
-
-      // Hide Modal Function
-        function hideModal() {
-          let modalContainer = document.querySelector('#modal-container');
-          modalContainer.classList.remove('is-visible');
-
-          if (dialogPromiseReject) {
-            dialogPromiseReject();
-            dialogPromiseReject = null;
-          }
-        }
-
-      // Declare the modal container visible & Remove by pressing ESQ key
-        window.addEventListener('keydown', (e) => {
-          let modalContainer = document.querySelector('#modal-container');
-          if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-            hideModal();  
-          }
-        });
     
-    
-    
+      
 // Load Pokemon list from API and add list items w/ buttons 
     pokemonRepository.loadList().then(function() {
       pokemonRepository.getAll().forEach(function(pokemon){
