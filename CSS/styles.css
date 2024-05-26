@@ -1,39 +1,6 @@
-/*
-  --text-color: #070808;
-  --page-background-color: #d4cdce;
-  --background-button-color: #f2f2f2;
-  --background-button-color-dark: #525161;
-  --background-button-hover-color: #ebe7e8;
-  --button-color: #fff;
-  --button-color1: #f95d9b; (Pink highlight)
-  --button-color2: #9bc400; (Grassy Green)
-  --button-color3: #39a0ca; (Bluewater lowlight)
-  --button-color4: #e0aaff; (light purple)
-  --button-color5: #ffa8B6; (Pink Sand)
-  --button-color6: #ffb766; (Grandpa Orange)
-
-
-/* ----------------------------------------------------------------------- */
-
-/* Font Name - Placeholder 
-@font-face {
-[placeholder]
-}*/
-
-/* Change Font later 
-@font-face {
-  [place-holder]
-} */
-
-/*
-@font-face {
-  [place-holder]
-} */
-
-/* Defined CSS Variables */
 :root {
   --text-color: #070808;
-  --page-background-color: #d4cdce ;
+  --page-background-color: #d4cdce;
   --background-button-color: #f2f2f2;
   --background-button-color-dark: #525161;
   --background-button-hover-color: #ebe7e8;
@@ -41,160 +8,162 @@
   --font-weight-bold: 700;
   --font-size-regular: 1rem;
   --button-color: #fff;
-  --button-color1: #f95d9b;
-  --button-color2: #9bc400;
-  --button-color3: #39a0ca;
-  --button-color4: #c77dff;
-  --button-color5: #ffa8B6;
-  --button-color6: #ffb766;
+  --button-color1: #f95d9b; /* Pink highlight */
+  --button-color2: #9bc400; /* Grassy Green */
+  --button-color3: #39a0ca; /* Bluewater lowlight */
+  --button-color4: #c77dff; /* light purple */
+  --button-color5: #ffa8B6; /* Pink Sand */
+  --button-color6: #ffb766; /* Grandpa Orange */
 }
 
 /* Body styling */
 body {
-  /* Background & Font Styles */
   background-color: var(--page-background-color);
-  /*font-family: [place-holder]*/
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-regular);
   color: var(--text-color);
   line-height: 1.4;
-  margin: 100px 60px 40px
+  margin: 100px 60px 40px;
 }
 
 /* Pokemon Title Styling */
 .pokemon-title {
- /*font-family: [place-holder]*/
   font-size: 40px;
   font-weight: var(--font-weight-normal);
-  color: var(--page-background-color)
+  color: var(--page-background-color);
 }
 
 /* Navbar Styling */
 #showNumberInNavbar {
   margin: 10px;
-  color: var(--button-color)
+  color: var(--button-color);
 }
 
 #navbarToggler {
-  justify-content: flex-end
+  justify-content: flex-end;
 }
 
 /* Modal header styling */
 .modal-header h1 {
-  /*font-family: [placeholder] */
   font-weight: var(--font-weight-normal);
   color: var(--text-color);
-  font-size: 3rem
+  font-size: 3rem;
 }
 
 /* Modal body paragraph styling */
 .modal-body p {
   font-size: 1.1rem;
-  font-weight: var(--font-weight-bold)
+  font-weight: var(--font-weight-bold);
 }
 
-/*Styling for Pokemon abilities */
+/* Styling for Pokemon abilities */
 .pokemonAbility {
   display: inline-block;
   padding: 5px 10px;
   margin: 5px 5px;
-  background-color: var(--background-button-color)
+  background-color: var(--background-button-color);
 }
 
-/*Styling for Pokemon types */
+/* Styling for Pokemon types */
 .pokemonTypes {
   display: inline-block;
   padding: 5px 10px;
   margin: 5px 5px;
-  background-color: var(--button-color2)
+  background-color: var(--button-color2);
 }
 
 /* Button for color variation */
 .color1Button {
-  border-color: var(--button-color1)
+  border-color: var(--button-color1);
 }
 
 .color2Button {
-  border-color: var(--button-color2)
+  border-color: var(--button-color2);
 }
 
 .color3Button {
-  border-color: var(--button-color3)
+  border-color: var(--button-color3);
 }
 
 .color4Button {
-  border-color: var(--button-color4)
+  border-color: var(--button-color4);
 }
 
 .color5Button {
-  border-color: var(--button-color5)
+  border-color: var(--button-color5);
 }
 
 .color6Button {
-  border-color: var(--button-color6)
+  border-color: var(--button-color6);
 }
 
 /* General button styling */
-ul .btn {
+.btn {
   color: var(--text-color);
-  background-color: var(--background-button-color);
+  background-color: var(--button-color);
   font-family: inherit;
   font-weight: var(--font-weight-bold);
   font-size: 1.2rem;
   padding: 1rem .75rem;
   border-width: 6px;
-  border-radius: 15px
+  border-radius: 15px;
 }
 
 /* Button hover effect */
 .btn:hover {
   background-color: var(--background-button-hover-color);
-  border-color: var(--background-button-hover-color)
+  border-color: var(--background-button-hover-color);
 }
 
 /* Styling for secondary buttons & search button */
-.btn-secondary,.searchButton {
+.btn-secondary,
+.searchButton {
   font-size: var(--font-size-regular);
   font-weight: var(--font-weight-bold);
   color: var(--button-color);
   background-color: var(--background-button-color-dark);
-  border: 0
+  border: 0;
 }
 
 /* Hover effect for secondary buttons & search button */
-.btn-secondary:hover,.searchButton:hover {
-  background-color: var(--text-color)
+.btn-secondary:hover,
+.searchButton:hover {
+  background-color: var(--text-color);
 }
 
 /* List group item styling */
 .list-group-item {
   border: 0;
-  background-color: var(--page-background-color)
+  background-color: var(--page-background-color);
 }
 
 /* Styling for back to list and load more buttons */
-.backToList,.loadMoreButton {
+.backToList,
+.loadMoreButton {
   font-family: inherit;
   font-weight: var(--font-weight-bold);
   font-size: 1.2rem;
   padding: .5rem .75rem;
   border-radius: 15px;
-  border-width: 0
+  border-width: 0;
 }
 
 .backToList {
   background-color: var(--background-button-color-dark);
-  color: var(--page-background-color)
+  color: var(--page-background-color);
 }
 
 .loadMoreButton {
   background-color: var(--background-button-color);
-  color: var(--text-color)
+  color: var(--text-color);
 }
 
-.backToList:focus,.backToList:active,.loadMoreButton:focus,.loadMoreButton:active {
+.backToList:focus,
+.backToList:active,
+.loadMoreButton:focus,
+.loadMoreButton:active {
   border-width: 0;
-  border-color: var(--background-button-color)
+  border-color: var(--background-button-color);
 }
 
 .displayInfoText {
@@ -203,12 +172,12 @@ ul .btn {
   font-size: 1.2rem;
   font-weight: var(--font-weight-normal);
   margin: 10px;
-  text-align: center
+  text-align: center;
 }
 
 /* Styling for invisible class (display: none) */
 .invisible {
-  display: none
+  display: none;
 }
 
 /* Imprint section styling */
@@ -216,69 +185,69 @@ ul .btn {
   font-size: .9rem;
   color: #656666;
   text-align: center;
-  margin: 1rem
+  margin: 1rem;
 }
 
 /* Media query for small screens (max-width: 720px) */
 @media all and (max-width: 720px) {
   body {
-      padding:0 20px;
-      margin: 75px 30px 20px
+    padding: 0 20px;
+    margin: 75px 30px 20px;
   }
 
   #showNumberInNavbar {
-      margin: 8px;
-      font-size: 16px
+    margin: 8px;
+    font-size: 16px;
   }
 
   .pokemon-title {
-      font-size: 35px
+    font-size: 35px;
   }
 
   .displayInfoText {
-      padding: 10px;
-      font-size: 1rem;
-      font-weight: var(--font-weight-normal);
-      margin: 6px
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: var(--font-weight-normal);
+    margin: 6px;
   }
 
   .modal-header h1 {
-      font-size: 2rem
+    font-size: 2rem;
   }
 }
 
 /* Media query for extra small screens (max-width: 576px) */
 @media all and (max-width: 576px) {
   body {
-      font-size:13pt;
-      padding: 0 20px;
-      margin: 65px 30px 20px
+    font-size: 13pt;
+    padding: 0 20px;
+    margin: 65px 30px 20px;
   }
 
   .pokemon-title {
-      font-size: 28px
+    font-size: 28px;
   }
 
   .displayInfoText {
-      padding: 10px;
-      font-size: 1rem;
-      font-weight: var(--font-weight-normal);
-      margin: 6px
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: var(--font-weight-normal);
+    margin: 6px;
   }
 
   .modal-header h1 {
-      font-size: 1.7rem
+    font-size: 1.7rem;
   }
 
   .listItemButton {
-      font-size: 1rem
+    font-size: 1rem;
   }
 
   ul {
-      padding: 5px
+    padding: 5px;
   }
 
   ul li {
-      margin: 10px 5px
+    margin: 10px 5px;
   }
 }
