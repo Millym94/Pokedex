@@ -1,12 +1,26 @@
 {
     "env": {
-        "es6": true,
-        "browser": true
+      "browser": true,
+      "es2021": true,
+      "node": true // Add this line for Node.js globals
     },
-    "extends": [
-        "eslint:recommended"
-    ],
+    "globals": {
+      "define": "readonly",
+      "exports": "readonly",
+      "setImmediate": "readonly",
+      "global": "readonly"
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    },
     "rules": {
-        "quotes": ["error", "single"]
+      "quotes": ["error", "single"],
+      "no-unused-vars": "warn",
+      "no-redeclare": "error",
+      "no-prototype-builtins": "error",
+      "no-undef": "error"
     }
-}
+  }
+  
